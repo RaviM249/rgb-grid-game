@@ -1,0 +1,52 @@
+body{
+	background-color: grey;
+	margin:0;
+	font font-family: "avenir";
+}
+.square{
+	width:30%;
+	background: purple;
+	padding-bottom: 30%;
+	float:left;
+	margin:1.66%;
+}
+#container{
+	margin:0 auto;
+	max-width: 600px;
+}
+h1{
+	color: black;
+	font font-weight: normal;
+	line-height: 1.1;
+	text-align: center;
+	background: steelblue;
+	margin: 0;
+	padding: 20px 0;
+	text-transform: uppercase;
+}
+#stripe{
+	background: white;
+	height: 30px;
+	text-align: center;
+}
+h3{
+	text-align: center;
+	margin-top: 400px;
+}
+button{
+	margin-top: 
+
+}
+.selected{
+	background: blue;
+}
+#lalu{
+	grid-auto-flow: 
+}
+#colordisplay{
+	font-size: 200%;
+}
+button{
+	border:none;
+	background: none;
+}
