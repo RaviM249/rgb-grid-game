@@ -1,0 +1,200 @@
+var numofsq=6;
+var colors=generateRandom(numofsq);
+var squares=document.querySelectorAll(".square");
+var picked=colors[3];
+var picked=pickColor();
+var messaged=document.querySelector("#message");
+var colorDisplay=document.getElementById("colordisplay");
+var reset=document.querySelector("#stripe");
+var easybtn= document.querySelector("#easybtn");
+var hardbtn=document.querySelector("#hardbtn");
+
+easybtn.addEventListener("click",function(){
+	hardbtn.classList.remove("selected");
+	easybtn.classList.add("selected");
+	numofsq=3
+	colors=generateRandom(3);
+	picked=pickColor();
+	colorDisplay.textContent=picked;
+	for(var i=0;i<squares.length;i++){
+		if(colors[i]){
+			squares[i].style.background=colors[i];
+		}
+		else{
+			squares[i].style.display="none"
+		}
+}	})
+hardbtn.addEventListener("click",function()
+{
+	hardbtn.classList.add("selected");
+	easybtn.classList.remove("selected");
+	colors=generateRandom(6);
+	numofsq=6
+	picked=pickColor();
+	colorDisplay.textContent=picked;
+	for(var i=0;i<squares.length;i++){
+		
+			squares[i].style.background=colors[i];
+		
+		
+			squares[i].style.display="block";
+		
+	}
+
+})
+reset.addEventListener("click",function(){
+	colors=generateRandom(numofsq);
+	picked=pickColor();
+	colorDisplay.textContent=picked;
+	messaged.textContent=""
+	for(var i=0;i<squares.length;i++){
+		squares[i].style.background=colors[i];
+	}
+	h1.style.background="steelblue";
+})
+var h1=document.querySelector("h1");
+colorDisplay.textContent=picked;
+for (var i=0;i<squares.length;i++){
+	squares[i].style.background=colors[i];
+	squares[i].addEventListener("click", function(){
+		var clickedColor= this.style.background;
+		if(clickedColor===picked){
+			messaged.textContent="Correct! click new colors to play again";
+			// reset.textContent="Play Again";
+			changeColors(clickedColor);
+			h1.style.background=clickedColor;
+		}
+		else{
+			this.style.background="grey";
+			messaged.textContent="Try Again!!";
+		}
+	})
+}
+function changeColors(color){
+	for(var i=0;i<squares.length;i++){
+		squares[i].style.background=color;
+	}
+}
+
+function pickColor(){
+	var random=Math.floor(Math.random()*colors.length);
+	return colors[random];
+}
+function generateRandom(num){
+	var arr=[]
+	for(var i=0;i<num;i++){
+
+arr.push(randomColor())
+	}
+	return arr;
+}
+function randomColor(){
+	var r=Math.floor(Math.random()*256);
+	var g=Math.floor(Math.random()*256);
+	var b=Math.floor(Math.random()*256);
+	return "rgb(" + r + ", " + g + ", " + b + ")";
+
+}
+body{
+	background-color: grey;
+	margin:0;
+	font font-family: "avenir";
+}
+.square{
+	width:30%;
+	background: purple;
+	padding-bottom: 30%;
+	float:left;
+	margin:1.66%;
+	border-radius: 15%;transition: background 0.5s;
+}
+#container{
+	margin:20px auto;
+	max-width: 600px;
+}
+h1{
+	color: black;
+	font font-weight: normal;
+	line-height: 1.1;
+	text-align: center;
+	background: steelblue;
+	margin: 0;
+	padding: 20px 0;
+	text-transform: uppercase;
+}
+#stripe{
+	background: white;
+	height: 30px;
+	text-align: center;
+}
+h3{
+	text-align: center;
+	margin-top: 380px;
+}
+
+.selected{
+	background: steelblue;
+	color:white;
+}
+#lalu{
+	background: white;
+	padding-right: 280px
+ 
+}
+#colordisplay{
+	font-size: 200%;
+}
+button{
+	border:none;
+	background: none;
+	height: 100%;
+	font-weight: 700;
+	color: steelblue;
+	letter-spacing: 1px;
+	font-size: inherit;
+	transition: all 0.5s;
+}
+#hint{
+	background: steelblue;
+}
+#message{
+	display: inline-block;
+	width: 20%;
+
+}
+button:hover{
+	color:white;
+	background: steelblue;
+}
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Colorgame</title>
+	<link rel="stylesheet" type="text/css" href="colorgame.css">
+</head>
+<body>
+	<h1>The Great
+	<br> <span id="colordisplay"> RGB</span><br> grid color game</h1>
+
+<div id="stripe">
+	<button id="reset">New Colors</button> 
+ <span id="message"> </span>
+	</div >
+	<div id="lalu" align="center" >  <button id=easybtn>Easy</button>
+	<button id= hardbtn class="selected">Hard</button></div>
+	
+	<div id="container">
+<div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+<div class="square"></div>
+</div>
+<div align="center">
+<a href="hint.html" target="_blank"><button id="hint">Click for Hint</button></a></div>
+<h3>Created by Ravi Kumar</h3>
+
+<script type="text/javascript" src="colorgame.js"></script>
+</body>
+</html>
